@@ -1,6 +1,17 @@
-export const products = [
+export interface Product {
+  id: string;
+  slug: string;
+  name: string;
+  category: "Fleece" | "T-Shirts" | "Headwear" | "Accessories";
+  price: string;
+  img: string;
+  description: string;
+}
+
+export const products: Product[] = [
   { 
     id: "1", 
+    slug: "hoodie-black-vinyl",
     name: "Pandgaea Signature Black Hoodie", 
     category: "Fleece", 
     price: "$65", 
@@ -9,6 +20,7 @@ export const products = [
   },
   { 
     id: "2", 
+    slug: "tee-white-black",
     name: "Classic White Logo Tee", 
     category: "T-Shirts", 
     price: "$35", 
@@ -17,6 +29,7 @@ export const products = [
   },
   { 
     id: "3", 
+    slug: "hat-black-dad",
     name: "Embroidered Black Dad Hat", 
     category: "Headwear", 
     price: "$28", 
@@ -25,6 +38,7 @@ export const products = [
   },
   { 
     id: "4", 
+    slug: "patch-panda",
     name: "Custom 8\" Patch", 
     category: "Accessories", 
     price: "$20", 
@@ -33,6 +47,7 @@ export const products = [
   },
   { 
     id: "5", 
+    slug: "hoodie-white-vinyl",
     name: "White Signature Hoodie", 
     category: "Fleece", 
     price: "$65", 
@@ -41,6 +56,7 @@ export const products = [
   },
   { 
     id: "6", 
+    slug: "tee-black-vinyl",
     name: "Black Logo Tee", 
     category: "T-Shirts", 
     price: "$35", 
@@ -49,6 +65,7 @@ export const products = [
   },
   { 
     id: "7", 
+    slug: "beanie-cream-wool",
     name: "Cream Wool Beanie", 
     category: "Headwear", 
     price: "$24", 
@@ -57,6 +74,7 @@ export const products = [
   },
   { 
     id: "8", 
+    slug: "hat-white-dad",
     name: "White Dad Hat", 
     category: "Headwear", 
     price: "$28", 
@@ -65,6 +83,7 @@ export const products = [
   },
   { 
     id: "9", 
+    slug: "hoodie-black-embroidered",
     name: "Pandgaea Direct Embroidered Hoodie", 
     category: "Fleece", 
     price: "$75", 
@@ -73,6 +92,7 @@ export const products = [
   },
   { 
     id: "10", 
+    slug: "beanie-black-stealth",
     name: "Stealth Knit Black Beanie", 
     category: "Headwear", 
     price: "$24", 
@@ -81,6 +101,7 @@ export const products = [
   },
   { 
     id: "11", 
+    slug: "tee-white-minimalist",
     name: "Minimalist Pocket-Print White Tee", 
     category: "T-Shirts", 
     price: "$32", 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Sparkles, ArrowRight, Eye, Flame, ShoppingBag } from "lucide-react";
+import { Sparkles, ArrowRight, Flame, ShoppingBag } from "lucide-react";
 
 export default function FlyingApparelHero() {
   const [activeSet, setActiveSet] = useState<"dark" | "light">("dark");
@@ -12,60 +12,60 @@ export default function FlyingApparelHero() {
       hoodie: {
         img: "/images/transparent_black hoodie white vinyl logo.png",
         title: "Pandgaea Signature Black Hoodie",
-        price: "$85.00",
+        price: "$65.00",
         tag: "450 GSM Heavy Fleece",
-        link: "/shop/hoodie-black-vinyl",
+        link: "/shop/1",
       },
       tee: {
         img: "/images/transparent_white tee black logo..png",
-        title: "Panda Yin-Yang Drop Tee",
-        price: "$38.00",
+        title: "Classic White Logo Tee",
+        price: "$35.00",
         tag: "280 GSM Vintage Wash",
-        link: "/shop/tee-white-black",
+        link: "/shop/2",
       },
       hat: {
         img: "/images/transparent_black dad hat.png",
-        title: "Panda Atelier Dad Hat",
-        price: "$32.00",
+        title: "Embroidered Black Dad Hat",
+        price: "$28.00",
         tag: "6-Panel Curved Brim",
-        link: "/shop/hat-black-dad",
+        link: "/shop/3",
       },
       patch: {
         img: "/images/transparent_patch.png",
-        title: "Chenille Merrowed Patch",
-        price: "$15.00",
+        title: "Custom 8\" Patch",
+        price: "$20.00",
         tag: "High-Density Stitch",
-        link: "/shop/patch-panda",
+        link: "/shop/4",
       },
     },
     light: {
       hoodie: {
         img: "/images/transparent_white hoodie black vinyl logo.png",
-        title: "Pandgaea Ghost White Hoodie",
-        price: "$85.00",
+        title: "White Signature Hoodie",
+        price: "$65.00",
         tag: "450 GSM French Terry",
-        link: "/shop/hoodie-white-vinyl",
+        link: "/shop/5",
       },
       tee: {
         img: "/images/transparent_black tee vinly logo.png",
-        title: "Nightshift Heavyweight Tee",
-        price: "$38.00",
+        title: "Black Logo Tee",
+        price: "$35.00",
         tag: "Drop Shoulder Cut",
-        link: "/shop/tee-black-vinyl",
+        link: "/shop/6",
       },
       hat: {
         img: "/images/transparent_white dad hat.png",
-        title: "Ghost White Dad Hat",
-        price: "$32.00",
+        title: "White Dad Hat",
+        price: "$28.00",
         tag: "Embroidered Eyelets",
-        link: "/shop/hat-white-dad",
+        link: "/shop/8",
       },
       patch: {
         img: "/images/transparent_cream wool beanie.png",
-        title: "Cream Ribbed Wool Beanie",
-        price: "$28.00",
+        title: "Cream Wool Beanie",
+        price: "$24.00",
         tag: "Fold-Over Woven Label",
-        link: "/shop/beanie-cream-wool",
+        link: "/shop/7",
       },
     },
   };
@@ -97,15 +97,15 @@ export default function FlyingApparelHero() {
               Streetwear In Motion
             </h2>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl mt-3">
-              Precision cut, high-density embroidery, and premium heavyweight blanks floating into reality. Hover any piece to inspect or order.
+              Precision cut, high-density embroidery, and premium heavyweight blanks floating into reality. Click any piece to view details and order.
             </p>
           </div>
 
           {/* Palette Switcher */}
-          <div className="flex items-center gap-2 bg-zinc-900/90 border border-zinc-800 p-1.5 rounded-full">
+          <div className="flex items-center gap-2 bg-zinc-900/90 border border-zinc-800 p-1.5 rounded-full z-20">
             <button
               onClick={() => setActiveSet("dark")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 activeSet === "dark"
                   ? "bg-white text-black shadow-md"
                   : "text-zinc-400 hover:text-white"
@@ -115,7 +115,7 @@ export default function FlyingApparelHero() {
             </button>
             <button
               onClick={() => setActiveSet("light")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 activeSet === "light"
                   ? "bg-white text-black shadow-md"
                   : "text-zinc-400 hover:text-white"
@@ -135,7 +135,7 @@ export default function FlyingApparelHero() {
           />
 
           {/* 1. LEFT PIECE: Flying Hoodie */}
-          <div className="absolute left-4 md:left-12 top-10 md:top-12 z-20 animate-fly-left">
+          <div className="absolute left-4 md:left-12 top-10 md:top-12 z-20 hover:z-40 focus-within:z-40 animate-fly-left">
             <Link
               href={current.hoodie.link}
               className="group block relative cursor-pointer"
@@ -150,7 +150,7 @@ export default function FlyingApparelHero() {
               </div>
 
               {/* Floating Pill Tag */}
-              <div className="mt-2 bg-black/85 backdrop-blur-md border border-zinc-800 rounded-2xl p-3 max-w-[220px] shadow-2xl group-hover:border-zinc-500 transition-all">
+              <div className="mt-2 bg-black/90 backdrop-blur-md border border-zinc-800 rounded-2xl p-3 max-w-[220px] shadow-2xl group-hover:border-amber-400 transition-all">
                 <span className="text-[10px] font-black uppercase tracking-wider text-amber-400 block mb-0.5">
                   {current.hoodie.tag}
                 </span>
@@ -166,7 +166,7 @@ export default function FlyingApparelHero() {
           </div>
 
           {/* 2. CENTER PIECE: Flying Graphic T-Shirt */}
-          <div className="relative z-30 animate-fly-center my-8 md:my-0">
+          <div className="relative z-30 hover:z-40 focus-within:z-40 animate-fly-center my-8 md:my-0">
             <Link
               href={current.tee.link}
               className="group block relative cursor-pointer"
@@ -181,7 +181,7 @@ export default function FlyingApparelHero() {
               </div>
 
               {/* Floating Center Badge */}
-              <div className="mx-auto mt-2 bg-black/90 backdrop-blur-md border border-zinc-700/80 rounded-2xl p-3.5 max-w-[260px] shadow-2xl text-center group-hover:border-white transition-all">
+              <div className="mx-auto mt-2 bg-black/95 backdrop-blur-md border border-zinc-700/80 rounded-2xl p-3.5 max-w-[260px] shadow-2xl text-center group-hover:border-white transition-all">
                 <div className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-red-400 mb-1">
                   <Flame className="w-3 h-3" /> {current.tee.tag}
                 </div>
@@ -189,7 +189,7 @@ export default function FlyingApparelHero() {
                 <div className="flex items-center justify-center gap-3 mt-2 pt-2 border-t border-zinc-800">
                   <span className="text-base font-black text-white">{current.tee.price}</span>
                   <span className="text-xs font-bold uppercase tracking-wider text-black bg-white px-3 py-1 rounded-lg flex items-center gap-1 shadow-md group-hover:bg-zinc-200 transition-colors">
-                    <ShoppingBag className="w-3 h-3" /> Quick View
+                    <ShoppingBag className="w-3 h-3" /> View Product
                   </span>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function FlyingApparelHero() {
           </div>
 
           {/* 3. RIGHT PIECE: Flying Dad Hat / Headwear */}
-          <div className="absolute right-4 md:right-12 top-8 md:top-14 z-20 animate-fly-right">
+          <div className="absolute right-4 md:right-12 top-8 md:top-14 z-20 hover:z-40 focus-within:z-40 animate-fly-right">
             <Link
               href={current.hat.link}
               className="group block relative cursor-pointer"
@@ -212,7 +212,7 @@ export default function FlyingApparelHero() {
               </div>
 
               {/* Floating Pill Tag */}
-              <div className="mt-2 bg-black/85 backdrop-blur-md border border-zinc-800 rounded-2xl p-3 max-w-[210px] shadow-2xl ml-auto group-hover:border-zinc-500 transition-all">
+              <div className="mt-2 bg-black/90 backdrop-blur-md border border-zinc-800 rounded-2xl p-3 max-w-[210px] shadow-2xl ml-auto group-hover:border-emerald-400 transition-all">
                 <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 block mb-0.5">
                   {current.hat.tag}
                 </span>
@@ -228,7 +228,7 @@ export default function FlyingApparelHero() {
           </div>
 
           {/* 4. FLOATING ACCENT: Merrowed Patch / Wool Beanie */}
-          <div className="absolute bottom-6 right-8 md:right-28 z-20 animate-fly-hat hidden sm:block">
+          <div className="absolute bottom-6 right-8 md:right-28 z-20 hover:z-40 focus-within:z-40 animate-fly-hat hidden sm:block">
             <Link
               href={current.patch.link}
               className="group block relative cursor-pointer"
@@ -240,7 +240,7 @@ export default function FlyingApparelHero() {
                   className="w-full h-full object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.9)]"
                 />
               </div>
-              <div className="bg-black/80 backdrop-blur-md border border-zinc-800 rounded-xl px-2.5 py-1.5 text-center mt-1">
+              <div className="bg-black/90 backdrop-blur-md border border-zinc-800 rounded-xl px-2.5 py-1.5 text-center mt-1 group-hover:border-amber-400 transition-colors">
                 <p className="text-[10px] font-black uppercase text-zinc-300 truncate">{current.patch.title}</p>
                 <span className="text-xs font-bold text-amber-400">{current.patch.price}</span>
               </div>

@@ -5,17 +5,28 @@ import AddToCartClient from "@/components/AddToCartClient";
 
 // Required for dynamic routes in Next.js app router if not fetching from DB
 export function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id,
-  }));
+  const byId = products.map((product) => ({ id: product.id }));
+  const bySlug = products.map((product) => ({ id: product.slug }));
+  return [...byId, ...bySlug];
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const product = products.find((p) => p.id === id);
+  const product = products.find((p) => p.id === id || p.slug === id);
 
   if (!product) {
-    return <div className="p-24 text-center font-black text-4xl uppercase">Product Not Found</div>;
+    return (
+      <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 text-center font-sans">
+        <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4 text-white">Product Not Found</h1>
+        <p className="text-zinc-400 mb-8 max-w-md">The product item you are looking for may have been moved or updated.</p>
+        <Link 
+          href="/shop"
+          className="bg-white text-black hover:bg-zinc-200 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-colors"
+        >
+          Return to Shop
+        </Link>
+      </main>
+    );
   }
 
   return (
