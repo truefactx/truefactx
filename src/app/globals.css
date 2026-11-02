@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- FLAIR: Marquee Animation --- */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+}
+
+/* --- FLAIR: Film Grain --- */
+.film-grain {
+  position: fixed;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  width: 200%; height: 200%;
+  background: transparent url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png') repeat 0 0;
+  background-size: 256px 256px;
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 9999;
+  animation: noiseAnimation 0.2s infinite;
+}
+@keyframes noiseAnimation {
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,15%) }
+  80% { transform: translate(3%,35%) }
+  90% { transform: translate(-10%,10%) }
+  100% { transform: translate(0,0) }
+}
+
+/* --- FLAIR: Fade-In Scroll --- */
+.fade-up-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up-element.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- KINETIC & FLYING APPAREL ANIMATIONS --- */
+@keyframes apparelFlyInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-200px, 120px, 0) rotate(-28deg) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(20px, -15px, 0) rotate(-4deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+  }
+}
+
+@keyframes apparelFlyInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(200px, 120px, 0) rotate(28deg) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-20px, -15px, 0) rotate(4deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(8deg) scale(1);
+  }
+}
+
+@keyframes apparelFlyInCenter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 220px, 0) scale(0.4) rotate(-5deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translate3d(0, -25px, 0) scale(1.08) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes apparelBob1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(-5deg);
+  }
+}
+
+@keyframes apparelBob2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(8deg);
+  }
+  50% {
+    transform: translateY(-26px) rotate(12deg);
+  }
+}
+
+@keyframes apparelBob3 {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.03) rotate(2deg);
+  }
+}
+
+@keyframes apparelBobHat {
+  0%, 100% {
+    transform: translateY(0px) rotate(14deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(9deg);
+  }
+}
+
+.animate-fly-left {
+  animation: apparelFlyInLeft 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) forwards, apparelBob1 6s ease-in-out 1.2s infinite;
+}
+
+.animate-fly-right {
+  animation: apparelFlyInRight 1.3s cubic-bezier(0.2, 0.9, 0.3, 1) forwards, apparelBob2 7s ease-in-out 1.3s infinite;
+}
+
+.animate-fly-center {
+  animation: apparelFlyInCenter 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards, apparelBob3 5.5s ease-in-out 1.1s infinite;
+}
+
+.animate-fly-hat {
+  animation: apparelFlyInRight 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards, apparelBobHat 6.5s ease-in-out 1.4s infinite;
+}
+
+/* --- KINETIC TRUEFACTX LETTER FLY-IN --- */
+@keyframes letterSwoopIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-140px) translateX(var(--drift, 0px)) scale(2.2) rotate(var(--rot, 0deg));
+    filter: blur(16px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(10px) translateX(0) scale(0.92) rotate(0deg);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+.kinetic-letter {
+  display: inline-block;
+  animation: letterSwoopIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+/* --- PANDA LOGO RADIAL GLOW & PULSE --- */
+@keyframes logoAuraPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.4));
+    transform: scale(1.04);
+  }
+}
+
+.animate-logo-glow {
+  animation: logoAuraPulse 4s ease-in-out infinite;
+}
+
+@keyframes slowOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-orbit-slow {
+  animation: slowOrbit 30s linear infinite;
+}
+
+/* --- LIVE BROADCAST RADAR PULSE --- */
+@keyframes liveRadar {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.radar-ring {
+  animation: liveRadar 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
