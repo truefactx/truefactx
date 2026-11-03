@@ -31,18 +31,18 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <main className="min-h-screen bg-white text-black font-sans">
-      {/* Navbar */}
-      <nav className="absolute top-0 w-full z-50">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+      {/* Product Page Navbar - Sticky below top Marquee Banner so links are never covered */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/" className="inline-flex items-center gap-2 bg-black text-white hover:bg-zinc-800 px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
-              <Home className="w-3.5 h-3.5" /> Home
+            <Link href="/" className="inline-flex items-center gap-2 bg-black text-white hover:bg-zinc-800 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+              <Home className="w-4 h-4" /> Home
             </Link>
-            <Link href="/shop" className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-zinc-600 hover:text-black transition-opacity">
-              <ArrowLeft className="w-3.5 h-3.5" /> Back to Shop
+            <Link href="/shop" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-zinc-700 hover:text-black transition-colors px-3 py-2 rounded-lg hover:bg-zinc-100">
+              <ArrowLeft className="w-4 h-4" /> Back to Shop
             </Link>
           </div>
-          <Link href="/cart" className="relative hover:opacity-70 transition-opacity">
+          <Link href="/cart" className="relative p-2 hover:opacity-70 transition-opacity">
             <ShoppingBag className="w-6 h-6" />
           </Link>
         </div>
